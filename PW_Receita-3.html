@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>   
+
+   <head>
+
+      <meta charset="UTF-8">      
+
+   </head>
+
+   <body>
+
+      <div><button id = "botaoCervejas">Carregando cervejas...</button></div>
+      <div><button id = "botaoDoces">Carregando doces...</buttom></div>
+      <div id = "itens"></div>         
+
+   </body>   
+
+   <script>
+      let cervejas = ["Skol", "Heineken", "Antartica"]
+      let doces = ["Chocolate", "Sorvete", "Pudim"]
+      let cervs = []
+
+       const carregarDiv = (cervs) => {
+         const div = document.getElementById("itens")
+         const cervejasHtml = cervs.map(item => {return `<h1>${item}</h1>`})
+         let ordenaCervejas = cervejasHtml.sort()
+         div.innerHTML = `${ordenaCervejas.join("\n")}`
+
+      }
+
+      let botaoCervejas = document.getElementById("botaoCervejas")
+      botaoCervejas.addEventListener("click", () => carregarDiv(cervejas))
+
+      let botaoDoces = document.getElementById("botaoDoces")
+      botaoDoces.addEventListener("click", () => carregarDiv(doces))
+
+   </script>
+
+</html>
