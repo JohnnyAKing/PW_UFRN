@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html>
+
+   <head>
+
+      <title>ReactZero</title>      
+
+   </head>
+
+   <body>
+
+      <div id="app">
+
+      
+
+      </div>
+
+      <script src="libs/react.js"></script>
+      <script src="libs/react-dom.js"></script>
+      <script src="libs/babel.js"></script>
+      
+      <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity = "sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+      <script type = "text/babel">
+
+        const TabelaBebidas = () =>{
+         
+          return <div id="app">
+
+            <table id = "tabela" border = "1" class = "table table-dark">
+
+              <thead>
+
+                <tr><th scope = "col">Bebidas</th><th>Preço</th></tr>
+
+              </thead>
+
+              <tbody id = "body">
+                
+              </tbody>
+
+            </table>
+
+          </div>
+
+        }
+
+        const exibirConteudo = bebidas => {
+
+          let tbody = document.getElementById('body');
+          const itens = bebidas.map(({bebida, preco}) => `<tr><td>${bebida}</td><td>${preco}</td></tr>`);
+          tbody.innerHTML = `${itens.join("\n")}`;
+
+        }
+
+        const Cabecalho = () =>{
+          
+          return <div class="card">
+
+                  <div class="card-body">
+
+                      <h1 class="card-title"> Tabela de Bebidas </h1>
+
+                      <h6 class="card-subtitle mb-2 text-muted">Lista de bebidas cadastradas</h6>
+
+                  </div>
+
+                 </div>
+                 
+        }
+
+        let bebidas = [
+          {
+            bebida: 'Agua',
+            preco: '4,00'
+          },
+
+          {
+            bebida: 'Suco de Laranja',
+            preco: '6,00'
+          },
+
+          {
+            bebida: 'Suco de Maracuja',
+            preco: '7,50'
+          },
+
+        ];
+
+        ReactDOM.render(
+
+          <div>
+
+            <Cabecalho/> 
+            <TabelaBebidas/>
+            
+            <div class="card">
+
+              <div class="card-body">
+
+               <input  class="btn btn-primary" type="button" onClick = {() => exibirConteudo(bebidas)} value ="Abrir Tabela"/>
+
+              </div>
+
+            </div>
+         
+          </div>
+          ,
+          document.getElementById("app"))
+
+      </script>
+
+   </body>
+
+</html>
